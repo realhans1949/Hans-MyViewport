@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hans MyViewport - Home</title>
+  <meta name="description" content="Live CSS viewport units reference for front-end developers. Values, snippets, and comparisons for vw, vh, dvh, svh, lvh, and more." />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none';" />
+  <link rel="icon" href="fvc.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="logo" aria-label="MyViewport">
+          <img src="LOGO.svg" alt="MyViewport" class="logo-img" />
+        </a>
+        <span class="header-sep"></span>
+        <span class="tagline">Units Reference, good for novice frontend developer. Happy developing!</span>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section-hero">
+      <div class="container">
+        <div class="hero-text">
+          <h1>Every Viewport Unit,<br>Explained.</h1>
+          <p>Live pixel values, copy-paste snippets, and side-by-side comparisons for every CSS viewport unit — from classic <code>vw</code>/<code>vh</code> to modern <code>dvh</code>, <code>svh</code>, and <code>lvh</code>.</p>
+        </div>
+        <div class="live-stats">
+          <div class="ls-item">
+            <div class="ls-label">Width</div>
+            <div class="ls-value" id="stat-w">—</div>
+          </div>
+          <div class="ls-item">
+            <div class="ls-label">Height</div>
+            <div class="ls-value" id="stat-h">—</div>
+          </div>
+          <div class="ls-item">
+            <div class="ls-label">1vw</div>
+            <div class="ls-value" id="stat-1vw">—</div>
+          </div>
+          <div class="ls-item">
+            <div class="ls-label">1vh</div>
+            <div class="ls-value" id="stat-1vh">—</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-calc">
+      <div class="container">
+        <h2 class="sec-title">Live Calculator</h2>
+        <div class="calc-box">
+          <div class="calc-inputs">
+            <input type="number" id="calc-val" value="50" min="0" max="10000" step="1" class="calc-input" aria-label="Value" />
+            <select id="calc-unit" class="calc-select" aria-label="Unit">
+              <option>vw</option>
+              <option>vh</option>
+              <option>vmin</option>
+              <option>vmax</option>
+            </select>
+          </div>
+          <span class="calc-eq">=</span>
+          <span class="calc-result"><span id="calc-out">—</span><span class="calc-px"> px</span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-units">
+      <div class="container">
+
+        <div class="unit-group">
+          <div class="group-head">
+            <h2>Classic Units</h2>
+            <p>Supported in all modern browsers since 2012.</p>
+          </div>
+          <div class="cards">
+
+            <div class="card">
+              <div class="card-top">
+                <span class="pill">vw</span>
+                <span class="unit-name">Viewport Width</span>
+              </div>
+              <p class="card-desc">1% of the viewport's width. <code>100vw</code> spans the full browser window width, including the scrollbar on some browsers.</p>
+              <div class="vis-wrap">
+                <svg viewBox="0 0 220 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="1.5" y="1.5" width="217" height="61" rx="7" fill="#F8FAFF" stroke="#E5E7EB" stroke-width="1.5"/>
+                  <rect x="1.5" y="22" width="217" height="20" fill="#DBEAFE" opacity="0.8"/>
+                  <text x="110" y="36" text-anchor="middle" font-size="10" fill="#2563EB" font-weight="600" font-family="JetBrains Mono, monospace">100vw</text>
+                  <line x1="110" y1="1.5" x2="110" y2="62.5" stroke="#BFDBFE" stroke-width="1" stroke-dasharray="4 3"/>
+                  <text x="55" y="57" text-anchor="middle" font-size="8" fill="#93C5FD" font-family="JetBrains Mono, monospace">50vw</text>
+                  <text x="165" y="57" text-anchor="middle" font-size="8" fill="#93C5FD" font-family="JetBrains Mono, monospace">50vw</text>
+                </svg>
+              </div>
+              <div class="live-row">1vw = <strong class="lv" data-unit="vw">—</strong></div>
+              <div class="snips">
+                <div class="snip"><code>width: 100vw;</code><button class="copy-btn" data-copy="width: 100vw;">Copy</button></div>
+                <div class="snip"><code>max-width: 90vw;</code><button class="copy-btn" data-copy="max-width: 90vw;">Copy</button></div>
+                <div class="snip"><code>font-size: clamp(1rem, 4vw, 2rem);</code><button class="copy-btn" data-copy="font-size: clamp(1rem, 4vw, 2rem);">Copy</button></div>
+              </div>
+              <p class="use-line"><span class="use-tag">Use for</span> Full-width layouts, fluid typography, hero banners</p>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <span class="pill">vh</span>
+                <span class="unit-name">Viewport Height</span>
+              </div>
+              <p class="card-desc">1% of the viewport's height. <code>100vh</code> fills the full browser window height. On mobile, the address bar can cause <code>100vh</code> to overflow — use <code>dvh</code>.</p>
+              <div class="vis-wrap">
+                <svg viewBox="0 0 110 130" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="1.5" y="1.5" width="107" height="127" rx="7" fill="#F8FAFF" stroke="#E5E7EB" stroke-width="1.5"/>
+                  <rect x="22" y="1.5" width="66" height="127" fill="#DBEAFE" opacity="0.8"/>
+                  <text x="55" y="69" text-anchor="middle" font-size="10" fill="#2563EB" font-weight="600" font-family="JetBrains Mono, monospace">100vh</text>
+                  <line x1="1.5" y1="65" x2="108.5" y2="65" stroke="#BFDBFE" stroke-width="1" stroke-dasharray="4 3"/>
+                  <text x="55" y="38" text-anchor="middle" font-size="8" fill="#93C5FD" font-family="JetBrains Mono, monospace">50vh</text>
+                  <text x="55" y="100" text-anchor="middle" font-size="8" fill="#93C5FD" font-family="JetBrains Mono, monospace">50vh</text>
+                </svg>
+              </div>
+              <div class="live-row">1vh = <strong class="lv" data-unit="vh">—</strong></div>
+              <div class="snips">
+                <div class="snip"><code>height: 100vh;</code><button class="copy-btn" data-copy="height: 100vh;">Copy</button></div>
+                <div class="snip"><code>min-height: 100vh;</code><button class="copy-btn" data-copy="min-height: 100vh;">Copy</button></div>
+                <div class="snip"><code>height: 50vh;</code><button class="copy-btn" data-copy="height: 50vh;">Copy</button></div>
+              </div>
+              <p class="use-line"><span class="use-tag">Use for</span> Full-height sections, sticky layouts (desktop)</p>
+              <div class="card-note">On mobile, <code>100vh</code> can overflow. Prefer <code>dvh</code> or <code>svh</code>.</div>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <span class="pill">vmin</span>
+                <span class="unit-name">Viewport Minimum</span>
+              </div>
+              <p class="card-desc">1% of whichever is smaller — <code>vw</code> or <code>vh</code>. Scales with the narrower dimension, making it great for elements that should stay square.</p>
+              <div class="live-row">1vmin = <strong class="lv" data-unit="vmin">—</strong></div>
+              <div class="snips">
+                <div class="snip"><code>width: 50vmin; height: 50vmin;</code><button class="copy-btn" data-copy="width: 50vmin; height: 50vmin;">Copy</button></div>
+                <div class="snip"><code>font-size: 5vmin;</code><button class="copy-btn" data-copy="font-size: 5vmin;">Copy</button></div>
+                <div class="snip"><code>padding: 3vmin;</code><button class="copy-btn" data-copy="padding: 3vmin;">Copy</button></div>
+              </div>
+              <p class="use-line"><span class="use-tag">Use for</span> Responsive squares, device-agnostic sizing</p>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <span class="pill">vmax</span>
+                <span class="unit-name">Viewport Maximum</span>
+              </div>
+              <p class="card-desc">1% of whichever is larger — <code>vw</code> or <code>vh</code>. Scales with the dominant dimension. Useful for type that should scale whether in portrait or landscape.</p>
+              <div class="live-row">1vmax = <strong class="lv" data-unit="vmax">—</strong></div>
+              <div class="snips">
+                <div class="snip"><code>font-size: 3vmax;</code><button class="copy-btn" data-copy="font-size: 3vmax;">Copy</button></div>
+                <div class="snip"><code>padding: 5vmax;</code><button class="copy-btn" data-copy="padding: 5vmax;">Copy</button></div>
+              </div>
+              <p class="use-line"><span class="use-tag">Use for</span> Typography scaled to dominant dimension</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="unit-group">
+          <div class="group-head">
+            <h2>Dynamic Viewport Units <span class="badge-new">CSS Level 4</span></h2>
+            <p>Built for mobile browsers where the address bar shrinks and expands as you scroll.</p>
+          </div>
+          <div class="cards">
+
+            <div class="card card-featured">
+              <div class="card-top">
+                <span class="pill pill-new">dvh</span>
+                <span class="unit-name">Dynamic Viewport Height</span>
+              </div>
+              <p class="card-desc">1% of the <em>current</em> viewport height — updates in real time as the browser UI expands or collapses. The recommended replacement for <code>100vh</code> on mobile.</p>
+              <div class="live-row">1dvh ≈ <strong class="lv" data-unit="dvh">—</strong></div>
+              <div class="snips">
+                <div class="snip"><code>height: 100dvh;</code><button class="copy-btn" data-copy="height: 100dvh;">Copy</button></div>
+                <div class="snip"><code>min-height: 100dvh;</code><button class="copy-btn" data-copy="min-height: 100dvh;">Copy</button></div>
+              </div>
+              <p class="use-line"><span class="use-tag">Use for</span> Mobile-safe full-height layouts, replacing <code>100vh</code></p>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <span class="pill pill-new">svh</span>
+                <span class="unit-name">Small Viewport Height</span>
+              </div>
+              <p class="card-desc">1% of the <em>smallest possible</em> viewport height (browser UI fully shown). Static — never overflows, but may leave unused space when the UI collapses.</p>
+              <div class="live-row">1svh ≈ <strong class="lv" data-unit="svh">—</strong></div>
+              <div class="snips">
+                <div class="snip"><code>min-height: 100svh;</code><button class="copy-btn" data-copy="min-height: 100svh;">Copy</button></div>
+                <div class="snip"><code>height: 100svh;</code><button class="copy-btn" data-copy="height: 100svh;">Copy</button></div>
+              </div>
+              <p class="use-line"><span class="use-tag">Use for</span> Content that must never overflow the screen</p>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <span class="pill pill-new">lvh</span>
+                <span class="unit-name">Large Viewport Height</span>
+              </div>
+              <p class="card-desc">1% of the <em>largest possible</em> viewport height (browser UI fully hidden). May cause a brief overflow until the UI collapses on first scroll.</p>
+              <div class="live-row">1lvh ≈ <strong class="lv" data-unit="lvh">—</strong></div>
+              <div class="snips">
+                <div class="snip"><code>height: 100lvh;</code><button class="copy-btn" data-copy="height: 100lvh;">Copy</button></div>
+              </div>
+              <p class="use-line"><span class="use-tag">Use for</span> Background fills, decorative elements</p>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <span class="pill pill-new">dvw</span>
+                <span class="unit-name">Dynamic Viewport Width</span>
+              </div>
+              <p class="card-desc">1% of the current dynamic viewport width. Equivalent to <code>vw</code> on most browsers, but correctly handles UI panels that may reduce the available width.</p>
+              <div class="live-row">1dvw ≈ <strong class="lv" data-unit="dvw">—</strong></div>
+              <div class="snips">
+                <div class="snip"><code>width: 100dvw;</code><button class="copy-btn" data-copy="width: 100dvw;">Copy</button></div>
+                <div class="snip"><code>max-width: 80dvw;</code><button class="copy-btn" data-copy="max-width: 80dvw;">Copy</button></div>
+              </div>
+              <p class="use-line"><span class="use-tag">Use for</span> Full-width containers, mobile drawers</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="unit-group">
+          <div class="group-head">
+            <h2>svh vs dvh vs lvh</h2>
+            <p>Choosing the right height unit for mobile browsers.</p>
+          </div>
+          <div class="table-wrap">
+            <table class="cmp-table">
+              <thead>
+                <tr>
+                  <th>Unit</th>
+                  <th>UI visible</th>
+                  <th>UI hidden</th>
+                  <th>Updates live</th>
+                  <th>Best for</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>vh</code></td>
+                  <td class="td-warn">Overflows ⚠</td>
+                  <td class="td-ok">Correct</td>
+                  <td class="td-no">No</td>
+                  <td>Desktop-only layouts</td>
+                </tr>
+                <tr>
+                  <td><code>svh</code></td>
+                  <td class="td-ok">Fits exactly</td>
+                  <td class="td-warn">Too small</td>
+                  <td class="td-no">No</td>
+                  <td>No-overflow content</td>
+                </tr>
+                <tr>
+                  <td><code>dvh</code></td>
+                  <td class="td-ok">Fits exactly</td>
+                  <td class="td-ok">Fits exactly</td>
+                  <td class="td-yes">Yes ✓</td>
+                  <td>Most mobile cases</td>
+                </tr>
+                <tr>
+                  <td><code>lvh</code></td>
+                  <td class="td-warn">Slight overflow</td>
+                  <td class="td-ok">Fits exactly</td>
+                  <td class="td-no">No</td>
+                  <td>Backgrounds, decoration</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="unit-group">
+          <div class="group-head">
+            <h2>Browser Support</h2>
+          </div>
+          <div class="support-grid">
+            <div class="support-card">
+              <div class="sup-units"><code>vw</code> <code>vh</code> <code>vmin</code> <code>vmax</code></div>
+              <span class="sup-badge sup-green">Full Support</span>
+              <p class="sup-detail">Chrome 26 · Firefox 19 · Safari 7 · Edge 12 · IE 9</p>
+            </div>
+            <div class="support-card">
+              <div class="sup-units"><code>dvh</code> <code>svh</code> <code>lvh</code> <code>dvw</code> <code>svw</code> <code>lvw</code></div>
+              <span class="sup-badge sup-blue">Wide Support</span>
+              <p class="sup-detail">Chrome 108 · Firefox 101 · Safari 15.4 · Edge 108</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img src="LOGO.svg" alt="MyViewport" class="footer-logo-img" />
+        </div>
+        <p class="footer-copy">&copy; 2026 <a href="https://github.com/realhans1949" target="_blank" rel="noopener noreferrer">realhans1949</a>. All rights reserved</p>
+        <p class="footer-note">All values are calculated live from your current browser viewport.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
